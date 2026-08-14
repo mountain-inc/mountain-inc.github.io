@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>株式会社マウンテン｜AIシステム開発</title>
+<meta name="description" content="株式会社マウンテンは、業務システムへのAI実装とAIプロダクトの受託開発を行う開発会社です。デモで終わらせず、現場で毎日使われるシステムとして設計・開発します。">
+<meta property="og:title" content="株式会社マウンテン｜AIシステム開発">
+<meta property="og:description" content="業務に、AIを実装する。デモで終わらせず、現場で毎日使われるシステムとして設計・開発します。">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FFFFFF;
+  --ink:#111111;
+  --ink-sub:#5A5A5A;
+  --accent:#FFE100;
+  --surface:#F5F5F3;
+  --line:#E3E3DF;
+  --dark:#0E0E0E;
+  --s1:8px; --s2:16px; --s3:24px; --s4:32px; --s5:48px; --s6:64px; --s7:96px; --s8:128px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth; scroll-padding-top:88px}
+body{
+  margin:0; background:var(--bg); color:var(--ink); overflow-x:hidden;
+  font-family:"Noto Sans JP",system-ui,sans-serif;
+  font-size:16px; line-height:1.85; letter-spacing:.02em;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%; height:auto; display:block}
+a{color:inherit}
+.en{font-family:"Archivo","Noto Sans JP",sans-serif; letter-spacing:.04em}
+.wrap{max-width:1160px; margin:0 auto; padding:0 var(--s4)}
+.lead{font-size:16px; margin:0; max-width:38em; color:#2B2B2B}
+.mark{background:linear-gradient(transparent 62%, var(--accent) 62%)}
+section{padding:var(--s8) 0}
+
+/* ---------- header ---------- */
+.hdr{position:fixed; top:0; left:0; right:0; z-index:50; background:rgba(255,255,255,.985);
+  backdrop-filter:blur(10px); border-bottom:1px solid var(--line)}
+.hdr-in{max-width:1160px; margin:0 auto; padding:0 var(--s4); height:88px;
+  display:flex; align-items:center; justify-content:space-between; gap:var(--s3)}
+.logo{font-size:22px; font-weight:700; text-decoration:none; letter-spacing:.16em; line-height:1}
+.logo small{display:block; font-size:9px; letter-spacing:.24em; color:var(--ink-sub); margin-top:5px;
+  font-family:"Archivo",sans-serif}
+.nav{display:flex; align-items:center; gap:var(--s5)}
+.nav a{font-size:13px; font-weight:600; letter-spacing:.14em; text-decoration:none; padding:var(--s1) 0;
+  border-bottom:2px solid transparent; transition:border-color .2s}
+.nav a:hover{border-bottom-color:var(--accent)}
+.nav .cta{background:var(--accent); border-radius:999px; padding:13px 26px; border-bottom:0}
+.nav .cta:hover{border-bottom:0; background:#F5D800}
+
+/* ---------- hero ---------- */
+.hero{position:relative; margin-top:88px; min-height:640px; height:calc(100vh - 88px); max-height:820px;
+  display:flex; align-items:center; overflow:hidden; background:var(--dark)}
+.hero-img{position:absolute; inset:0; z-index:0}
+.hero-img img{width:100%; height:100%; object-fit:cover; object-position:60% 50%; opacity:.85}
+.hero-shade{position:absolute; inset:0; z-index:0;
+  background:linear-gradient(90deg, rgba(10,10,10,.93) 0%, rgba(10,10,10,.78) 45%, rgba(10,10,10,.5) 78%, rgba(10,10,10,.62) 100%)}
+.hero-in{position:relative; z-index:1; width:100%}
+.hero-tag{display:flex; align-items:center; gap:var(--s2); margin-bottom:var(--s4)}
+.hero-tag i{display:block; width:48px; height:3px; background:var(--accent)}
+.hero-tag span{font-size:11px; letter-spacing:.28em; font-weight:600; color:var(--accent)}
+.hero h1{margin:0 0 var(--s4); color:#fff; font-weight:700; line-height:1.0;
+  font-size:clamp(46px,8.4vw,124px); letter-spacing:.005em}
+.hero h1 .l2{display:block; padding-left:.08em}
+.hero h1 .thin{-webkit-text-stroke:1.5px rgba(255,255,255,.95); color:transparent}
+.hero .jp{color:#fff; font-size:22px; font-weight:700; margin:0 0 var(--s3); line-height:1.6}
+.hero .sub{color:rgba(255,255,255,.82); font-size:15px; margin:0; max-width:30em}
+.hero-meta{position:absolute; left:0; right:0; bottom:0; z-index:2; border-top:1px solid rgba(255,255,255,.18)}
+.hero-meta-in{max-width:1160px; margin:0 auto; padding:var(--s3) var(--s4);
+  display:flex; gap:var(--s6); flex-wrap:wrap}
+.hero-meta dl{margin:0}
+.hero-meta dt{font-size:10px; letter-spacing:.22em; color:rgba(255,255,255,.55); font-family:"Archivo",sans-serif}
+.hero-meta dd{margin:4px 0 0; font-size:14px; color:#fff; font-weight:500}
+
+/* ---------- ticker band ---------- */
+.band{background:var(--dark); color:#fff; padding:var(--s3) 0; overflow:hidden; border-top:1px solid #222}
+.band ul{display:flex; gap:var(--s5); list-style:none; margin:0; padding:0 var(--s4); white-space:nowrap;
+  overflow-x:auto; scrollbar-width:none}
+.band ul::-webkit-scrollbar{display:none}
+.band li{font-size:13px; letter-spacing:.16em; font-weight:600; color:rgba(255,255,255,.72);
+  font-family:"Archivo",sans-serif; display:flex; align-items:center; gap:var(--s5)}
+.band li::after{content:""; width:5px; height:5px; background:var(--accent); border-radius:50%; flex:0 0 5px}
+.band li:last-child::after{display:none}
+
+/* ---------- section head ---------- */
+.sec-head{display:flex; align-items:flex-end; gap:var(--s4); flex-wrap:wrap;
+  border-bottom:2px solid var(--ink); padding-bottom:var(--s3); margin-bottom:var(--s7)}
+.sec-num{font-family:"Archivo",sans-serif; font-size:13px; font-weight:700; letter-spacing:.2em;
+  color:var(--ink-sub); padding-bottom:12px}
+.sec-en{font-family:"Archivo",sans-serif; font-size:clamp(38px,5.5vw,72px); font-weight:700; line-height:.9;
+  margin:0; letter-spacing:.01em}
+.sec-ja{margin-left:auto; font-size:14px; font-weight:700; color:var(--ink-sub); padding-bottom:10px;
+  letter-spacing:.08em}
+.sec-lead{font-size:19px; line-height:1.9; font-weight:500; max-width:34em; margin:0 0 var(--s6)}
+
+/* ---------- about ---------- */
+.about-grid{display:grid; grid-template-columns:1fr 1fr; gap:var(--s7); align-items:center; margin-bottom:var(--s8)}
+.figure{position:relative}
+.figure img{width:100%; aspect-ratio:4/3; object-fit:cover}
+.figure::after{content:""; position:absolute; right:-20px; bottom:-20px; width:100%; height:100%;
+  background:var(--accent); z-index:-1}
+.figure-wrap{position:relative; z-index:1}
+.about-copy h3{font-size:32px; line-height:1.5; font-weight:700; margin:0 0 var(--s3)}
+.about-copy p+p{margin-top:var(--s3)}
+
+.principles{display:grid; grid-template-columns:repeat(3,1fr); gap:var(--s5)}
+.principle{border-top:2px solid var(--ink); padding-top:var(--s3)}
+.principle .pn{font-family:"Archivo",sans-serif; font-size:12px; letter-spacing:.2em; color:var(--ink-sub);
+  margin:0 0 var(--s3)}
+.principle h4{font-size:20px; line-height:1.6; margin:0 0 var(--s2); font-weight:700}
+.principle p{font-size:14.5px; margin:0; color:#3A3A3A}
+
+/* ---------- service ---------- */
+.works{background:var(--surface)}
+.svc{display:grid; grid-template-columns:auto 1fr; gap:var(--s6); padding:var(--s6) 0;
+  border-top:1px solid #D9D9D4; align-items:start}
+.svc:last-of-type{border-bottom:1px solid #D9D9D4}
+.svc-no{font-family:"Archivo",sans-serif; font-size:56px; font-weight:700; line-height:.9; color:#CFCFC8}
+.svc h3{font-size:26px; line-height:1.5; margin:0 0 var(--s3); font-weight:700}
+.svc h3 em{font-style:normal; font-family:"Archivo",sans-serif; display:block; font-size:12px;
+  letter-spacing:.2em; color:var(--ink-sub); margin-bottom:10px; font-weight:600}
+.svc .body{display:grid; grid-template-columns:1.3fr 1fr; gap:var(--s5)}
+.svc .body p{margin:0; font-size:15px; color:#2B2B2B}
+.svc-list{margin:0; padding:0; list-style:none; border-left:3px solid var(--accent); padding-left:var(--s3)}
+.svc-list dt{font-size:11px; letter-spacing:.18em; font-family:"Archivo",sans-serif; color:var(--ink-sub);
+  margin-bottom:var(--s1)}
+.svc-list dd{margin:0 0 var(--s3); font-size:14px; line-height:1.8}
+.svc-list dd:last-child{margin-bottom:0}
+
+/* ---------- technology (dark) ---------- */
+.tech{background:var(--dark); color:#fff}
+.tech .sec-head{border-bottom-color:#333}
+.tech .sec-num{color:#8A8A85}
+.tech .sec-ja{color:#8A8A85}
+.tech .sec-lead{color:rgba(255,255,255,.8)}
+.tech-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:1px; background:#2A2A2A; border:1px solid #2A2A2A}
+.tech-cell{background:var(--dark); padding:var(--s5)}
+.tech-cell .tn{font-family:"Archivo",sans-serif; font-size:11px; letter-spacing:.2em; color:var(--accent);
+  margin:0 0 var(--s3)}
+.tech-cell h4{font-size:21px; margin:0 0 var(--s2); font-weight:700}
+.tech-cell p{margin:0; font-size:14.5px; color:rgba(255,255,255,.72)}
+.tech-note{margin:var(--s5) 0 0; font-size:13px; color:rgba(255,255,255,.5)}
+
+/* ---------- process ---------- */
+.steps{display:grid; grid-template-columns:repeat(5,1fr); gap:var(--s3)}
+.step{border-top:2px solid var(--ink); padding-top:var(--s3)}
+.step .n{font-family:"Archivo",sans-serif; font-size:40px; font-weight:700; line-height:1; margin:0 0 var(--s3)}
+.step .n em{font-style:normal; background:linear-gradient(transparent 58%, var(--accent) 58%)}
+.step h4{font-size:16px; margin:0 0 var(--s1); font-weight:700}
+.step p{font-size:13.5px; margin:0; color:var(--ink-sub); line-height:1.8}
+
+/* ---------- faq ---------- */
+.faq{background:var(--surface)}
+.faq-list{border-top:1px solid #D9D9D4}
+.faq-item{border-bottom:1px solid #D9D9D4; padding:var(--s5) 0;
+  display:grid; grid-template-columns:auto 1fr; gap:var(--s4) var(--s3); align-items:start}
+.faq-q,.faq-a{display:contents}
+.qmark{font-family:"Archivo",sans-serif; font-weight:700; font-size:20px; line-height:1.4}
+.qmark.a{color:var(--ink-sub)}
+.faq-item h4{margin:0; font-size:18px; line-height:1.6; font-weight:700; max-width:40em}
+.faq-item p{margin:0; font-size:15px; color:#2B2B2B; max-width:42em}
+
+/* ---------- company ---------- */
+.company-grid{display:grid; grid-template-columns:1fr 1.35fr; gap:var(--s7); align-items:start}
+table.info{width:100%; border-collapse:collapse; font-size:15px}
+table.info th,table.info td{text-align:left; padding:var(--s3) var(--s2); border-bottom:1px solid var(--line);
+  vertical-align:top}
+table.info tr:first-child th,table.info tr:first-child td{border-top:1px solid var(--line)}
+table.info th{width:170px; font-weight:700; white-space:nowrap; font-size:13px; letter-spacing:.06em}
+table.info td{color:#2B2B2B}
+
+/* ---------- contact ---------- */
+.contact{background:var(--accent)}
+.contact .sec-head{border-bottom-color:#111}
+.contact .sec-num,.contact .sec-ja{color:#4A4A4A}
+.contact .sec-lead{color:#1A1A1A}
+.form{margin-top:var(--s6); max-width:760px}
+.field{margin-bottom:var(--s4)}
+.field label{display:block; font-size:14px; font-weight:700; margin-bottom:var(--s1)}
+.field label .req{font-size:11px; background:#111; color:#fff; border-radius:3px; padding:2px 6px; margin-left:var(--s1);
+  letter-spacing:.06em; vertical-align:2px}
+.field input,.field textarea,.field select{width:100%; border:1px solid #111; background:#fff; padding:14px var(--s2);
+  font-family:inherit; font-size:16px; line-height:1.7; color:var(--ink); border-radius:0}
+.field textarea{min-height:170px; resize:vertical}
+.field input:focus,.field textarea:focus,.field select:focus{outline:3px solid #111; outline-offset:1px}
+.submit{background:#111; color:#fff; border:0; border-radius:999px; padding:19px 60px; font-size:16px;
+  font-weight:700; font-family:inherit; cursor:pointer}
+.submit:hover{background:#333}
+.form-note{font-size:13px; color:#4A4A4A; margin:var(--s3) 0 0}
+
+/* ---------- footer ---------- */
+.ftr{background:var(--dark); color:#fff; padding:var(--s7) 0 var(--s5)}
+.ftr-in{display:flex; justify-content:space-between; gap:var(--s6); flex-wrap:wrap}
+.ftr .logo{color:#fff}
+.ftr address{font-style:normal; font-size:14px; color:#B5B5B0; margin-top:var(--s3); line-height:1.9}
+.ftr-nav{display:flex; gap:var(--s5); flex-wrap:wrap; align-items:flex-start}
+.ftr-nav a{font-size:13px; font-weight:600; letter-spacing:.14em; text-decoration:none; color:#fff;
+  font-family:"Archivo",sans-serif}
+.ftr-nav a:hover{color:var(--accent)}
+.copy{margin-top:var(--s6); padding-top:var(--s3); border-top:1px solid #2A2A2A; font-size:12px; color:#8A8A85;
+  display:flex; justify-content:space-between; gap:var(--s3); flex-wrap:wrap}
+
+/* ---------- responsive ---------- */
+@media (max-width:1000px){
+  .about-grid,.company-grid{grid-template-columns:1fr; gap:var(--s6)}
+  .principles{grid-template-columns:1fr; gap:var(--s4)}
+  .tech-grid{grid-template-columns:1fr}
+  .steps{grid-template-columns:repeat(2,1fr); gap:var(--s4)}
+  .svc{grid-template-columns:1fr; gap:var(--s3); padding:var(--s5) 0}
+  .svc-no{font-size:40px}
+  .svc .body{grid-template-columns:1fr; gap:var(--s4)}
+  .figure::after{right:-12px; bottom:-12px}
+}
+@media (max-width:768px){
+  section{padding:var(--s7) 0}
+  .wrap{padding:0 var(--s3)}
+  .hdr-in{padding:12px var(--s3); height:auto; flex-direction:column; align-items:stretch; gap:10px}
+  .logo{font-size:17px}
+  .logo small{font-size:8px; margin-top:3px}
+  .nav{gap:var(--s2); justify-content:space-between}
+  .nav a{font-size:11px; letter-spacing:.06em}
+  .nav .cta{padding:8px 18px}
+  html{scroll-padding-top:104px}
+  .hero{display:block; margin-top:100px; min-height:0; height:auto; max-height:none; padding:var(--s7) 0 0}
+  .hero-meta{position:relative; z-index:2}
+  .hero-img img{object-position:58% 45%}
+  .hero-shade{background:linear-gradient(180deg, rgba(10,10,10,.72) 0%, rgba(10,10,10,.6) 45%, rgba(10,10,10,.88) 100%)}
+  .hero h1{font-size:44px; line-height:1.05}
+  .hero .jp{font-size:18px}
+  .hero-meta{position:relative; z-index:2; margin-top:var(--s6)}
+  .hero-meta-in{padding:var(--s3) var(--s3); gap:var(--s3) var(--s5)}
+  .sec-head{margin-bottom:var(--s5); gap:var(--s2)}
+  .sec-ja{margin-left:0; width:100%; padding-bottom:0}
+  .sec-lead{font-size:16px; margin-bottom:var(--s5)}
+  .about-copy h3{font-size:23px}
+  .about-grid{margin-bottom:var(--s7)}
+  .steps{grid-template-columns:1fr}
+  .tech-cell{padding:var(--s4) var(--s3)}
+  .faq-item{padding:var(--s4) 0; gap:var(--s2) var(--s2)}
+  .faq-item h4{font-size:16px}
+  table.info th{width:104px; padding-left:0; font-size:12px}
+  table.info td{font-size:14px}
+  .ftr-in{flex-direction:column; gap:var(--s4)}
+  .ftr-nav{gap:var(--s3)}
+}
+@media (max-width:400px){
+  .nav{gap:10px}
+  .nav a{font-size:10px}
+  .nav .cta{padding:8px 13px}
+}
+</style>
+</head>
+<body>
+
+<header class="hdr">
+  <div class="hdr-in">
+    <a href="#home" class="logo en">MOUNTAIN<small>AI SYSTEM DEVELOPMENT</small></a>
+    <nav class="nav en">
+      <a href="#home">HOME</a>
+      <a href="#about">ABOUT</a>
+      <a href="#works">WORKS</a>
+      <a href="#contact" class="cta">CONTACT</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- ============ HERO ============ -->
+  <div class="hero" id="home">
+    <div class="hero-img">
+      <img src="images/hero.webp" width="1920" height="1072" alt="">
+    </div>
+    <div class="hero-shade"></div>
+
+    <div class="hero-in">
+      <div class="wrap">
+        <div class="hero-tag"><i></i><span class="en">AI SYSTEM DEVELOPMENT</span></div>
+        <h1 class="en">AI <span class="thin">THAT WORKS</span></h1>
+        <p class="jp">業務に、AIを実装する。</p>
+        <p class="sub">デモで終わらせない。実際の業務のなかで毎日使われるシステムとして、設計から開発・運用までを担当します。</p>
+      </div>
+    </div>
+
+    <div class="hero-meta">
+      <div class="hero-meta-in">
+        <dl><dt class="en">ESTABLISHED</dt><dd>2022年10月</dd></dl>
+        <dl><dt class="en">BASED IN</dt><dd>東京都世田谷区 三軒茶屋</dd></dl>
+        <dl><dt class="en">FIELD</dt><dd>AIシステム受託開発 / 自社プロダクト開発</dd></dl>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ BAND ============ -->
+  <div class="band">
+    <ul class="en">
+      <li>SYSTEM INTEGRATION</li>
+      <li>GENERATIVE AI</li>
+      <li>WORKFLOW AUTOMATION</li>
+      <li>PROOF OF CONCEPT</li>
+      <li>WEB APPLICATION</li>
+      <li>OPERATION &amp; SUPPORT</li>
+    </ul>
+  </div>
+
+  <!-- ============ ABOUT ============ -->
+  <section id="about">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="sec-num">01</span>
+        <h2 class="sec-en">ABOUT</h2>
+        <span class="sec-ja">わたしたちについて</span>
+      </div>
+
+      <p class="sec-lead">AIは、試すところまでならもう難しくありません。難しいのは、実際の業務フローに載せて、担当者が毎日使い続けられる形にすることです。</p>
+
+      <div class="about-grid">
+        <div class="figure-wrap">
+          <div class="figure">
+            <img src="images/about.webp" width="1600" height="1211" alt="事務所のパソコンでシステムを操作している担当者">
+          </div>
+        </div>
+        <div class="about-copy">
+          <h3>つくるのは、<span class="mark">使われるAI</span>です。</h3>
+          <p class="lead">世の中には「AIを導入したが使われていない」システムが数多くあります。理由の多くは技術ではなく、業務の実態と合っていないことにあります。誰がいつ触るのか、間違えたときにどう戻すのか、そこが抜けた仕組みは現場で止まります。</p>
+          <p class="lead">株式会社マウンテンは、業務の中身を理解したうえでシステムとして組み上げ、リリースしたあとの運用まで見届けます。技術の新しさではなく、現場で動き続けることを基準に設計します。</p>
+          <p class="lead">受託開発だけでなく、自社でもAIプロダクトを開発・販売しています。作って終わりではなく、使われ続ける状態を保つ側の苦労を知ったうえで設計できることが、わたしたちの強みです。</p>
+        </div>
+      </div>
+
+      <div class="principles">
+        <div class="principle">
+          <p class="pn en">PRINCIPLE 01</p>
+          <h4>現場から設計する</h4>
+          <p>要望をそのまま実装しません。誰が、いつ、何に時間を使っているかを確認し、いちばん効く場所を決めてから設計に入ります。</p>
+        </div>
+        <div class="principle">
+          <p class="pn en">PRINCIPLE 02</p>
+          <h4>小さく作って確かめる</h4>
+          <p>最初から全体を作りません。使える精度が出るかを小さく検証し、見込みが立ってから本開発に進みます。向いていない場合はその理由をお伝えします。</p>
+        </div>
+        <div class="principle">
+          <p class="pn en">PRINCIPLE 03</p>
+          <h4>運用まで見届ける</h4>
+          <p>納品して終わりにしません。実際に使われる中で出てくる調整に対応し、動き続ける状態を保ちます。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WORKS / SERVICE ============ -->
+  <section id="works" class="works">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="sec-num">02</span>
+        <h2 class="sec-en">WORKS</h2>
+        <span class="sec-ja">わたしたちができること</span>
+      </div>
+
+      <p class="sec-lead">受託開発と自社プロダクト開発の両方を行っています。相談の入口はどこからでも構いません。「何ができるか分からない」という状態からでもお受けします。</p>
+
+      <div class="svc">
+        <div class="svc-no en">01</div>
+        <div>
+          <h3><em class="en">SYSTEM INTEGRATION</em>業務システムへのAI実装</h3>
+          <div class="body">
+            <p>いま使っている業務システムや日々の手作業に、AIによる判定・生成・要約を組み込みます。既存の仕組みを置き換えるのではなく、必要なところにだけ足す方針です。システム全体を作り替えないため、現場の混乱を最小限に抑えられます。</p>
+            <dl class="svc-list">
+              <dt class="en">TYPICAL REQUEST</dt>
+              <dd>毎日手作業で分類・転記している業務を減らしたい／問い合わせ対応の下書きを自動で作りたい／蓄積した文書から必要な情報を探せるようにしたい</dd>
+              <dt class="en">DELIVERABLES</dt>
+              <dd>既存システムへの追加機能、連携用のプログラム、運用手順書</dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+
+      <div class="svc">
+        <div class="svc-no en">02</div>
+        <div>
+          <h3><em class="en">PRODUCT DEVELOPMENT</em>AIプロダクトの受託開発</h3>
+          <div class="body">
+            <p>企画・要件定義から設計、実装、リリース後の改善までを一貫して担当します。自社でもプロダクトを開発・販売しているため、開発だけでなく、公開したあとに何が起きるかを踏まえた設計ができます。画面の使い勝手や、誤作動したときの戻し方まで含めて考えます。</p>
+            <dl class="svc-list">
+              <dt class="en">TYPICAL REQUEST</dt>
+              <dd>自社サービスにAI機能を組み込みたい／新しいAIプロダクトを立ち上げたい／作りかけのシステムを引き継いで完成させたい</dd>
+              <dt class="en">DELIVERABLES</dt>
+              <dd>Webアプリケーション本体、管理画面、仕様書、保守対応</dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+
+      <div class="svc">
+        <div class="svc-no en">03</div>
+        <div>
+          <h3><em class="en">PROOF OF CONCEPT</em>PoC・技術検証</h3>
+          <div class="body">
+            <p>「そもそもAIで実現できるのか」を、小さく作って先に確かめます。判定の精度が業務に耐えるか、費用が見合うかを、本開発に入る前に数字で確認します。作れないもの・向いていないものは、その理由とあわせて正直にお伝えします。無理に開発を勧めることはしません。</p>
+            <dl class="svc-list">
+              <dt class="en">TYPICAL REQUEST</dt>
+              <dd>AI化できるか判断がつかない／社内で予算をとる前に見込みを示したい／複数案のどれが現実的か比べたい</dd>
+              <dt class="en">DELIVERABLES</dt>
+              <dd>検証用の試作、精度・コストの測定結果、次に進むかどうかの判断材料</dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TECHNOLOGY ============ -->
+  <section id="technology" class="tech">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="sec-num">—</span>
+        <h2 class="sec-en">TECHNOLOGY</h2>
+        <span class="sec-ja">取り扱う領域</span>
+      </div>
+
+      <p class="sec-lead">流行の技術を持ち込むことが目的ではありません。業務の内容に対して、いちばん確実に動く方法を選びます。</p>
+
+      <div class="tech-grid">
+        <div class="tech-cell">
+          <p class="tn en">FIELD 01</p>
+          <h4>生成AI・大規模言語モデルの活用</h4>
+          <p>文章の生成・要約・分類、社内文書からの情報検索など。既製のAIサービスを使う場合と、自前で組む場合の両方を、費用と精度で比較して選びます。</p>
+        </div>
+        <div class="tech-cell">
+          <p class="tn en">FIELD 02</p>
+          <h4>画像・データの判定</h4>
+          <p>画像や数値データをもとにした分類・検出・異常の検知。人が目視で判断している作業のうち、機械に任せられる部分を切り分けます。</p>
+        </div>
+        <div class="tech-cell">
+          <p class="tn en">FIELD 03</p>
+          <h4>業務システムとの連携</h4>
+          <p>既存の基幹システム、表計算ファイル、クラウドサービスとの接続。日々の入力・出力の流れに無理なく差し込めるかを重視します。</p>
+        </div>
+        <div class="tech-cell">
+          <p class="tn en">FIELD 04</p>
+          <h4>Webアプリケーション開発</h4>
+          <p>業務画面・管理画面の設計と実装、そのための基盤構築。AI部分だけでなく、実際に人が触る画面までを一貫して作ります。</p>
+        </div>
+      </div>
+
+      <p class="tech-note">※ 使用する具体的なサービス・モデルは、ご相談内容と費用の条件をふまえて個別に選定します。</p>
+    </div>
+  </section>
+
+  <!-- ============ PROCESS ============ -->
+  <section id="process">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="sec-num">—</span>
+        <h2 class="sec-en">PROCESS</h2>
+        <span class="sec-ja">進め方</span>
+      </div>
+
+      <p class="sec-lead">いきなり見積書は出しません。何をどこまでやるかが決まってから、金額と期間をお出しします。</p>
+
+      <div class="steps">
+        <div class="step">
+          <p class="n en"><em>01</em></p>
+          <h4>相談・業務を見る</h4>
+          <p>誰が、いつ、何に時間を使っているかを確認します。この段階で費用はいただきません。</p>
+        </div>
+        <div class="step">
+          <p class="n en"><em>02</em></p>
+          <h4>できるか確かめる</h4>
+          <p>いちばん効く部分だけを小さく作り、使える精度が出るかを検証します。</p>
+        </div>
+        <div class="step">
+          <p class="n en"><em>03</em></p>
+          <h4>設計・お見積り</h4>
+          <p>範囲・画面・スケジュールを決め、金額をお出しします。ここで進めるかを判断いただきます。</p>
+        </div>
+        <div class="step">
+          <p class="n en"><em>04</em></p>
+          <h4>開発・確認</h4>
+          <p>動くものを早めにお見せしながら進めます。使ってみて出た違和感はその場で直します。</p>
+        </div>
+        <div class="step">
+          <p class="n en"><em>05</em></p>
+          <h4>運用・改善</h4>
+          <p>リリース後の調整・保守に対応します。使われ方の変化に合わせて手を入れます。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FAQ ============ -->
+  <section id="faq" class="faq">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="sec-num">—</span>
+        <h2 class="sec-en">FAQ</h2>
+        <span class="sec-ja">よくあるご質問</span>
+      </div>
+
+      <div class="faq-list">
+        <div class="faq-item">
+          <span class="qmark en">Q</span>
+          <h4>AIについて詳しくないのですが、相談できますか。</h4>
+          <span class="qmark a en">A</span>
+          <p>問題ありません。むしろ「AIで何ができるか分からない」という段階からのご相談が中心です。まず業務の話を伺い、AIを使うべきかどうかから一緒に判断します。</p>
+        </div>
+        <div class="faq-item">
+          <span class="qmark en">Q</span>
+          <h4>小さく始めることはできますか。</h4>
+          <span class="qmark a en">A</span>
+          <p>できます。むしろ推奨しています。最初から全体を作ると、精度が足りなかったときの損失が大きくなります。効果の見込める一部分から始め、確かめながら広げる進め方をご提案します。</p>
+        </div>
+        <div class="faq-item">
+          <span class="qmark en">Q</span>
+          <h4>期間や費用はどのくらいかかりますか。</h4>
+          <span class="qmark a en">A</span>
+          <p>内容によって大きく変わるため、この場では申し上げられません。検証だけであれば短期間で終わることもあれば、業務システムへの本格的な組み込みでは相応の期間をいただきます。お話を伺ったうえで、範囲を決めてからお見積りします。</p>
+        </div>
+        <div class="faq-item">
+          <span class="qmark en">Q</span>
+          <h4>いま使っているシステムを作り替える必要がありますか。</h4>
+          <span class="qmark a en">A</span>
+          <p>多くの場合、必要ありません。既存の仕組みは残したまま、必要な部分にだけ機能を足す方針で進めます。作り替えたほうが結果的に安く済む場合は、その理由もあわせてご説明します。</p>
+        </div>
+        <div class="faq-item">
+          <span class="qmark en">Q</span>
+          <h4>作ったあとの保守もお願いできますか。</h4>
+          <span class="qmark a en">A</span>
+          <p>対応しています。AIを使ったシステムは、使われ方やデータが変われば精度も変わります。作って終わりにせず、動き続ける状態を保つところまでを前提に設計しています。</p>
+        </div>
+        <div class="faq-item">
+          <span class="qmark en">Q</span>
+          <h4>遠方でも依頼できますか。</h4>
+          <span class="qmark a en">A</span>
+          <p>可能です。打ち合わせはオンラインを中心に進めています。業務の様子を実際に見せていただいたほうが良い場合は、訪問についてご相談させてください。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ COMPANY ============ -->
+  <section id="company">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="sec-num">03</span>
+        <h2 class="sec-en">COMPANY</h2>
+        <span class="sec-ja">会社概要</span>
+      </div>
+
+      <div class="company-grid">
+        <div>
+          <p class="lead">株式会社マウンテンは、東京・三軒茶屋に拠点を置くAIシステムの開発会社です。受託開発と自社プロダクト開発の両方を手がけています。</p>
+          <p class="lead" style="margin-top:var(--s3)">少人数で運営しているため、担当者が最後まで通しで対応します。窓口と実際に作る人間が別、ということはありません。</p>
+        </div>
+        <div>
+          <table class="info">
+            <tbody>
+              <tr><th>商号</th><td>株式会社マウンテン</td></tr>
+              <tr><th>所在地</th><td>〒154-0004<br>東京都世田谷区太子堂4丁目18-15</td></tr>
+              <tr><th>設立</th><td>2022年10月5日</td></tr>
+              <tr><th>代表者</th><td>代表取締役　本山 俊一</td></tr>
+              <tr><th>資本金</th><td>1,000,000円</td></tr>
+              <tr><th>事業内容</th><td>AIシステムの受託開発<br>自社AIプロダクトの開発・販売<br>業務システムの設計・開発・保守</td></tr>
+              <tr><th>法人番号</th><td>1011501028544</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section id="contact" class="contact">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="sec-num">04</span>
+        <h2 class="sec-en">CONTACT</h2>
+        <span class="sec-ja">お問い合わせ</span>
+      </div>
+
+      <p class="sec-lead">まだ形になっていない相談で構いません。内容を伺ったうえで、できること・できないことをお返しします。</p>
+
+      <form class="form" action="#" method="post">
+        <div class="field">
+          <label for="company">会社名<span class="req">必須</span></label>
+          <input type="text" id="company" name="company" required autocomplete="organization">
+        </div>
+        <div class="field">
+          <label for="name">お名前<span class="req">必須</span></label>
+          <input type="text" id="name" name="name" required autocomplete="name">
+        </div>
+        <div class="field">
+          <label for="email">メールアドレス<span class="req">必須</span></label>
+          <input type="email" id="email" name="email" required autocomplete="email">
+        </div>
+        <div class="field">
+          <label for="kind">ご相談の種類</label>
+          <select id="kind" name="kind">
+            <option>まだ決まっていない・相談したい</option>
+            <option>業務システムへのAI実装</option>
+            <option>AIプロダクトの受託開発</option>
+            <option>PoC・技術検証</option>
+            <option>その他</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="message">ご相談内容<span class="req">必須</span></label>
+          <textarea id="message" name="message" required placeholder="例）毎日2時間かけて手作業で分類している業務があり、減らせないか検討しています。"></textarea>
+        </div>
+        <button type="submit" class="submit">送信する</button>
+        <p class="form-note">※ 送信先の設定は未接続です（公開前に設定します）。</p>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer class="ftr">
+  <div class="wrap">
+    <div class="ftr-in">
+      <div>
+        <a href="#home" class="logo en">MOUNTAIN<small>AI SYSTEM DEVELOPMENT</small></a>
+        <address>
+          株式会社マウンテン<br>
+          〒154-0004 東京都世田谷区太子堂4丁目18-15
+        </address>
+      </div>
+      <nav class="ftr-nav">
+        <a href="#home">HOME</a>
+        <a href="#about">ABOUT</a>
+        <a href="#works">WORKS</a>
+        <a href="#technology">TECHNOLOGY</a>
+        <a href="#process">PROCESS</a>
+        <a href="#faq">FAQ</a>
+        <a href="#company">COMPANY</a>
+        <a href="#contact">CONTACT</a>
+      </nav>
+    </div>
+    <div class="copy">
+      <span class="en">© 2026 MOUNTAIN Inc.</span>
+      <span class="en">AI SYSTEM DEVELOPMENT / TOKYO</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
