@@ -55,27 +55,27 @@ section{padding:var(--s8) 0}
 
 /* ---------- hero ---------- */
 .hero{position:relative; margin-top:88px; min-height:640px; height:calc(100vh - 88px); max-height:820px;
-  display:flex; align-items:center; overflow:hidden; background:var(--dark)}
-.hero-img{position:absolute; inset:0; z-index:0}
-.hero-img img{width:100%; height:100%; object-fit:cover; object-position:60% 50%; opacity:1}
+  display:flex; align-items:center; overflow:hidden; background:var(--accent)}
+.hero-img{position:absolute; inset:0; z-index:0; mix-blend-mode:multiply}
+.hero-img img{width:100%; height:100%; object-fit:cover; object-position:60% 50%; filter:invert(1) grayscale(1) contrast(1.1)}
 .hero-shade{position:absolute; inset:0; z-index:0;
-  background:linear-gradient(90deg, rgba(10,10,10,.72) 0%, rgba(10,10,10,.45) 40%, rgba(10,10,10,.12) 75%, rgba(10,10,10,.05) 100%)}
+  background:linear-gradient(90deg, rgba(255,225,0,.82) 0%, rgba(255,225,0,.55) 40%, rgba(255,225,0,0) 75%)}
 .hero-in{position:relative; z-index:1; width:100%}
 .hero-tag{display:flex; align-items:center; gap:var(--s2); margin-bottom:var(--s4)}
-.hero-tag i{display:block; width:48px; height:3px; background:var(--accent)}
-.hero-tag span{font-size:11px; letter-spacing:.28em; font-weight:600; color:var(--accent)}
-.hero h1{margin:0 0 var(--s4); color:#fff; font-weight:700; line-height:1.0;
+.hero-tag i{display:block; width:48px; height:3px; background:var(--ink)}
+.hero-tag span{font-size:11px; letter-spacing:.28em; font-weight:600; color:var(--ink)}
+.hero h1{margin:0 0 var(--s4); color:var(--ink); font-weight:700; line-height:1.0;
   font-size:clamp(46px,8.4vw,124px); letter-spacing:.005em}
 .hero h1 .l2{display:block; padding-left:.08em}
-.hero h1 .thin{-webkit-text-stroke:1.5px #fff; color:rgba(10,10,10,.45)}
-.hero .jp{color:#fff; font-size:22px; font-weight:700; margin:0 0 var(--s3); line-height:1.6}
-.hero .sub{color:rgba(255,255,255,.82); font-size:15px; margin:0; max-width:30em}
-.hero-meta{position:absolute; left:0; right:0; bottom:0; z-index:2; border-top:1px solid rgba(255,255,255,.18)}
+.hero h1 .thin{-webkit-text-stroke:2px var(--ink); color:rgba(255,225,0,.6)}
+.hero .jp{color:var(--ink); font-size:22px; font-weight:700; margin:0 0 var(--s3); line-height:1.6}
+.hero .sub{color:var(--ink); font-size:15px; margin:0; max-width:30em}
+.hero-meta{position:absolute; left:0; right:0; bottom:0; z-index:2; border-top:1px solid rgba(17,17,17,.25); background:rgba(255,225,0,.7)}
 .hero-meta-in{max-width:1160px; margin:0 auto; padding:var(--s3) var(--s4);
   display:flex; gap:var(--s6); flex-wrap:wrap}
 .hero-meta dl{margin:0}
-.hero-meta dt{font-size:10px; letter-spacing:.22em; color:rgba(255,255,255,.55); font-family:"Archivo",sans-serif}
-.hero-meta dd{margin:4px 0 0; font-size:14px; color:#fff; font-weight:500}
+.hero-meta dt{font-size:10px; letter-spacing:.22em; color:rgba(17,17,17,.7); font-family:"Archivo",sans-serif}
+.hero-meta dd{margin:4px 0 0; font-size:14px; color:var(--ink); font-weight:500}
 
 /* ---------- ticker band ---------- */
 .band{background:var(--dark); color:#fff; padding:var(--s3) 0; overflow:hidden; border-top:1px solid #222}
@@ -105,8 +105,8 @@ section{padding:var(--s8) 0}
 .figure::after{content:""; position:absolute; right:-20px; bottom:-20px; width:100%; height:100%;
   background:var(--accent); z-index:-1}
 .figure-wrap{position:relative; z-index:1}
-.about-catch{font-size:clamp(36px, 6.2vw, 80px); line-height:1.25; font-weight:700; letter-spacing:-.01em; margin:0 0 var(--s7)}
-.about-catch .br{display:none}
+.catch-box{container-type:inline-size; margin:0 0 var(--s7)}
+.about-catch{font-size:10.2cqw; line-height:1.2; font-weight:700; letter-spacing:-.02em; white-space:nowrap; margin:0}
 .about-copy p+p{margin-top:var(--s3)}
 
 .principles{display:grid; grid-template-columns:repeat(3,1fr); gap:var(--s5)}
@@ -227,19 +227,17 @@ table.info td{color:#2B2B2B}
   .nav a{font-size:11px; letter-spacing:.06em}
   .nav .cta{padding:8px 18px}
   html{scroll-padding-top:104px}
-  .hero{display:block; margin-top:100px; min-height:0; height:auto; max-height:none; padding:var(--s7) 0 0}
+  .hero{display:block; margin-top:100px; min-height:0; height:auto; max-height:none; padding:var(--s7) 0}
   .hero-meta{position:relative; z-index:2}
   .hero-img img{object-position:58% 45%}
-  .hero-shade{background:linear-gradient(180deg, rgba(10,10,10,.5) 0%, rgba(10,10,10,.4) 45%, rgba(10,10,10,.7) 100%)}
-  .hero h1{font-size:44px; line-height:1.05}
+  .hero-shade{background:rgba(255,225,0,.5)}
+  .hero h1{font-size:23vw; line-height:.95; letter-spacing:-.01em}
   .hero .jp{font-size:18px}
-  .hero-meta{position:relative; z-index:2; margin-top:var(--s6)}
-  .hero-meta-in{padding:var(--s3) var(--s3); gap:var(--s3) var(--s5)}
+  .hero-meta{display:none}
   .sec-head{margin-bottom:var(--s5); gap:var(--s2)}
   .sec-ja{margin-left:0; width:100%; padding-bottom:0}
   .sec-lead{font-size:16px; margin-bottom:var(--s5)}
-  .about-catch{margin-bottom:var(--s5)}
-  .about-catch .br{display:inline}
+  .catch-box{margin-bottom:var(--s5)}
   .about-grid{margin-bottom:var(--s7)}
   .steps{grid-template-columns:1fr}
   .tech-cell{padding:var(--s4) var(--s3)}
@@ -321,7 +319,7 @@ table.info td{color:#2B2B2B}
 
       <p class="sec-lead">AIは、試すところまでならもう難しくありません。難しいのは、実際の業務フローに載せて、担当者が毎日使い続けられる形にすることです。</p>
 
-      <h3 class="about-catch">つくるのは、<br class="br"><span class="mark">使われるAI</span>です。</h3>
+      <div class="catch-box"><h3 class="about-catch">つくるのは<span class="mark">使われるAI</span></h3></div>
 
       <div class="about-grid">
         <div class="figure-wrap">
